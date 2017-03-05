@@ -1,7 +1,11 @@
-title            : BAN313Assignments
+title            : Industrial analysis using R - Assignments
 instructors      :
  - elias.willemse@up.ac.za
-description      : This is an automatically generated demo course which will help you on your way to create an awesome DataCamp course.
-university       : DataCamp
+description      : "This course is a supplimentary course for Industrial Analysis using R, and consists of Assignment chapters. The chappters are more difficult than the general practice exercises and case studies, with less help in the form of instructions, hints and error messages.
+
+This course forms part of the Industrial Analysis 3rd year module, presented by the Department of Industrial and Systems Engineering, University of Pretoria, South Africa.
+
+Please note that this course is a work in progress, and that we are actively adding to and improving its contents."
+university       : Department of Industrial and Systems Engineering, University of Pretoria, South Africa
 difficulty_level : 2
-time_needed      : 1 hour
+time_needed      : 2 hours
