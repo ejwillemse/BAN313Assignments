@@ -1,8 +1,6 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Assignment 1 - Introduction to data, probability, and inference.
+description : This assignment covers the first three chapters of Industrial Analysis using R, which deals with introduction to data, basic probability theory, and inference for categorical and numerical data.
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bd1c2c90f3
 ## A really bad movie
