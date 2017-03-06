@@ -206,7 +206,114 @@ test_object("p_value", undefined_msg = "Make sure to calculate the p-value and a
 test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
             incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
 
-success_msg("Correct!")
+success_msg("Correct! Remember to copy and post your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2188ad509e
+## Confidence interval for proportions
+
+Calculate a 97% confidence interval for the true proportion of _burgers_ that will be upgraded to a combo-meal.
+
+*** =instructions
+
+1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+2. Calculate the Margin of Error for the 97% Confidence Interval and assign your answer to `ME`.
+3. Calculate the lower value of the Confidence Interval and assign your answer to `CI_low`.
+4. Calculate the upper value of the Confidence Interval and assign your answer to `CI_high`.
+
+*** =hint
+
+There are no hints available.
+
+*** =pre_exercise_code
+```{r}
+genFastFoodSales <- function()
+{
+  nItems = round(runif(1, 5000, 10000), 0)
+  food_items <- c('burger', 'pizza')
+  foodItemSold <- sample(food_items, nItems, replace = TRUE)
+  
+  invoiceNumber <- paste('#', round(runif(nItems, 100000, 999999),0), sep= "")
+  fastFoodSales <- data.frame(invoiceNumber, foodItemSold)
+  fastFoodSales <- fastFoodSales[order(fastFoodSales$invoiceNumber),]
+  return(fastFoodSales)
+}
+
+salesJan <- genFastFoodSales()
+salesJanPizza <- subset(salesJan, foodItemSold == "pizza")
+comboUpgradeAccepted <- sample(c(TRUE, FALSE), nrow(salesJanPizza), replace = TRUE, prob = c(0.25, 0.75))
+salesJanPizza$comboUpgradeAccepted = comboUpgradeAccepted
+
+salesJanBurger <- subset(salesJan, foodItemSold == "burger")
+comboUpgradeAccepted <- sample(c(TRUE, FALSE), nrow(salesJanBurger), replace = TRUE, prob = c(0.45, 0.55))
+salesJanBurger$comboUpgradeAccepted = comboUpgradeAccepted
+
+comboUpgrade <- rbind(salesJanBurger, salesJanPizza)
+comboUpgradeSample <- sample(1:nrow(comboUpgrade), size = 200)
+comboUpgrade <- comboUpgrade[comboUpgradeSample,]
+
+comboUpgradeJan17 <- comboUpgrade[order(comboUpgrade$invoiceNumber),][1:200,]
+rm(salesJan)
+rm(genFastFoodSales)
+rm(salesJanPizza)
+rm(comboUpgradeAccepted)
+rm(salesJanBurger)
+rm(comboUpgrade)
+rm(comboUpgradeSample)
+```
+
+*** =sample_code
+```{r}
+# 1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+
+SE <- 
+
+# 2. Calculate the Margin of Error for the 97% Confidence Interval and assign your answer to `ME`.
+
+ME <-
+
+# 3. Calculate the lower value of the Confidence Interval and assign your answer to `CI_low`.
+
+CI_low <-
+
+# 4. Calculate the upper value of the Confidence Interval and assign your answer to `CI_high`.
+
+CI_high <-
+
+```
+
+*** =solution
+```{r}
+salesTable <- table(comboUpgradeJan17$foodItemSold) #asdfe@###441
+salesUpgradePropTable <- prop.table(table(comboUpgradeJan17$foodItemSold, comboUpgradeJan17$comboUpgradeAccepted),1)
+
+nBurgerMcd = as.numeric(salesTable['burger'])
+pBurgerUpgrade = salesUpgradePropTable[1,2]
+
+CI_level = 0.97
+
+SE = sqrt(pBurgerUpgrade*(1-pBurgerUpgrade)/nBurgerMcd)
+df = nBurgerMcd - 1
+
+ME = abs(qnorm((1-CI_level)/2, lower.tail = TRUE))*SE
+CI = c(pBurgerUpgrade - ME, pBurgerUpgrade + ME)
+CI_low = CI[1]
+CI_high = CI[2]
+```
+
+*** =sct
+```{r}
+test_object("SE", undefined_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`.",
+            incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula (check when and when not to use the pooled proportion), or you calculated the number of samples incorrectly.")
+            
+test_object("ME", undefined_msg = "Make sure to calculate the margin of error and assign your answer to `ME`.",
+            incorrect_msg = "Make sure to calculate the margin of error and assign your answer to `ME`. What could have possibly gone wrong is that you incorrectly calculated the critical z* value.")
+            
+test_object("CI_low", undefined_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.",
+            incorrect_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.")
+
+test_object("CI_high", undefined_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.",
+            incorrect_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.")
+```
