@@ -309,7 +309,7 @@ test_object("SE", undefined_msg = "Make sure to calculate the Standard Error and
             incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula (check when and when not to use the pooled proportion), or you calculated the number of samples incorrectly.")
             
 test_object("ME", undefined_msg = "Make sure to calculate the margin of error and assign your answer to `ME`.",
-            incorrect_msg = "Make sure to calculate the margin of error and assign your answer to `ME`. What could have possibly gone wrong is that you incorrectly calculated the critical z* value.")
+            incorrect_msg = "Make sure to calculate the margin of error and assign your answer to `ME`. What could have possibly gone wrong is that you incorrectly calculated the critical z* value, or your ME is negative whereas it should always be positive.")
             
 test_object("CI_low", undefined_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.",
             incorrect_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.")
