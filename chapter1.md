@@ -98,7 +98,7 @@ There are no hints available.
 genFastFoodSales <- function()
 {
   nItems = round(runif(1, 5000, 10000), 0)
-  food_items <- c('burger-combo', 'pizza-combo', 'burger', 'pizza', 'fries', 'cooldrink', 'ice-cream')
+  food_items <- c('burger', 'pizza')
   foodItemSold <- sample(food_items, nItems, replace = TRUE)
   
   invoiceNumber <- paste('#', round(runif(nItems, 100000, 999999),0), sep= "")
@@ -107,6 +107,7 @@ genFastFoodSales <- function()
   return(fastFoodSales)
 }
 
+salesJan <- genFastFoodSales()
 salesJanPizza <- subset(salesJan, foodItemSold == "pizza")
 comboUpgradeAccepted <- sample(c(TRUE, FALSE), nrow(salesJanPizza), replace = TRUE, prob = c(0.25, 0.75))
 salesJanPizza$comboUpgradeAccepted = comboUpgradeAccepted
@@ -119,13 +120,14 @@ comboUpgrade <- rbind(salesJanBurger, salesJanPizza)
 comboUpgradeSample <- sample(1:nrow(comboUpgrade), size = 200)
 comboUpgrade <- comboUpgrade[comboUpgradeSample,]
 
+comboUpgradeJan17 <- comboUpgrade[order(comboUpgrade$invoiceNumber),][1:200,]
+rm(salesJan)
 rm(genFastFoodSales)
 rm(salesJanPizza)
 rm(comboUpgradeAccepted)
 rm(salesJanBurger)
 rm(comboUpgrade)
 rm(comboUpgradeSample)
-comboUpgradeJan17 <- comboUpgrade[order(comboUpgrade$invoiceNumber),][1:200,]
 ```
 
 *** =sample_code
@@ -162,15 +164,17 @@ rejectH0 <-
 
 *** =solution
 ```{r}
-salesTable <- table(comboUpgrade$foodItemSold) #asdfe@###441
-salesUpgradePropTable <- prop.table(table(comboUpgrade$foodItemSold, comboUpgrade$comboUpgradeAccepted),1)
+# solution
 
-nPizzasHuts = as.numeric(salesTable['pizza'])
+salesTable <- table(comboUpgradeJan17$foodItemSold) #asdfe@###441
+salesUpgradePropTable <- prop.table(table(comboUpgradeJan17$foodItemSold, comboUpgradeJan17$comboUpgradeAccepted),1)
+
 nBurgerMcd = as.numeric(salesTable['burger'])
+nPizzasHuts = as.numeric(salesTable['pizza'])
 
-pPizzaUpgrade = salesUpgradePropTable[1,2] #4334@39913
-pBurgerUpgrade = salesUpgradePropTable[2,2]
-pPooled = as.numeric((table(comboUpgrade$comboUpgradeAccepted)/nrow(comboUpgrade))['TRUE'])
+pBurgerUpgrade = salesUpgradePropTable[1,2]
+pPizzaUpgrade = salesUpgradePropTable[2,2] #4334@39913
+pPooled = as.numeric((table(comboUpgradeJan17$comboUpgradeAccepted)/nrow(comboUpgradeJan17))['TRUE'])
 
 tenSuccess = pPooled*nPizzasHuts > 10 & pPooled*nBurgerMcd > 10
 tenFailure = (1-pPooled)*nPizzasHuts > 10 & (1-pPooled)*nBurgerMcd > 10
