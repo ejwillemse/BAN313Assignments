@@ -417,7 +417,7 @@ t.test(x = burgerProcessTimesPreparePatty, mu = 59, alternative = "greater")
 
 *** =sct
 ```{r}
-test_object("x", undefined_msg = "Make sure to calculate the mean patty preperation process time and assign your answer to  `x`.",
+test_object("x", undefined_msg = "Make sure to calculate the mean patty preparation process time and assign your answer to  `x`.",
             incorrect_msg = "Make sure to calculate the mean patty preparation process time and assign your answer to  `x`.")
 
 test_object("x", undefined_msg = "Make sure to calculate the standard deviation of the patty preperation process time and assign your answer to  `sdev`.",
