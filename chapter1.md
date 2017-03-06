@@ -1,6 +1,6 @@
 ---
 title       : Assignment 1 - Introduction to data, probability, and inference.
-description : This assignment covers the first three chapters of Industrial Analysis using R, which deals with introduction to data, basic probability theory, and inference for categorical and numerical data.
+description : This assignment covers the first four chapters of Industrial Analysis using R, which deals with introduction to data, basic probability theory, and inference for categorical and numerical data.
 
 
 
