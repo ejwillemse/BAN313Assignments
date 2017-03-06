@@ -206,7 +206,7 @@ test_object("p_value", undefined_msg = "Make sure to calculate the p-value and a
 test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
             incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
 
-success_msg("Correct! Remember to copy and post your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
 ```
 
 
@@ -215,6 +215,8 @@ success_msg("Correct! Remember to copy and post your answer from the editor into
 ## Confidence interval for proportions
 
 Calculate a 97% confidence interval for the true proportion of _burgers_ that will be upgraded to a combo-meal.
+
+Results for the pilot can be found in the `comboUpgradeJan17` data-frame.
 
 *** =instructions
 
@@ -316,4 +318,125 @@ test_object("CI_low", undefined_msg = "Make sure to calculate the lower confiden
 
 test_object("CI_high", undefined_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.",
             incorrect_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.")
+
+success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:0b9e31a47e
+## Hypothesis test for numerical data
+
+We wish to analyse the burger-making process, which management is unhappy with. The time taken to complete a burger was observed for a random sampled of ordered burgers. The results of which can be found in the `burgerProcessTimes` data-frame.
+
+Burger making consists of four processes. The time taken to complete each process, in seconds, was captured for each burger in the sample and can be found in the frame.
+
+An external trainer claims that his specialised training will result in a mean processing time of the patty preparation to about 58 seconds. Management has indicated that if there is sufficient evidence that the current process takes longer than 59 seconds, we should consider hiring the trainer.
+
+Is there sufficient evidence using an alpha = 0.01 level to suggest that the current patty preparation time is more than 59 seconds?
+
+The hyptheses are:
+
+* H0: The current patty preparation process takes on average 59 seconds.
+* HA: The current patty preparation process takes on average more than 59 seconds.
+
+*** =instructions
+
+1. Calculate the sample mean and standard deviation of the patty preperation process and assign your answers to the `x` and `sdev`.
+2. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
+3. Calculate the T-score for the hypothesis test and assign your answer to `T_score`.
+4. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
+5. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+6. Confirm the results of your calculations using the `t.test()` function.
+
+*** =hint
+
+There are no hints available.
+
+*** =pre_exercise_code
+```{r}
+nSamples <- round(runif(1, 200, 400),0)
+sampleNumber <- c(1:nSamples)
+preparePatty <- round(abs(rnorm(nSamples, mean = 60, sd = 10)), 0)
+prepareBun <- round(abs(rnorm(nSamples, mean = 20, sd = 3)), 0)
+assembleBurger <- round(abs(rnorm(nSamples, mean = 40, sd = 8)), 0)
+packageBurger <- round(abs(rnorm(nSamples, mean = 15, sd = 3)), 0)
+
+burgerProcessTimes <- data.frame(sampleNumber, preparePatty, prepareBun, assembleBurger, packageBurger)
+
+randomOutlierRow <- round(runif(1, 1, nSamples), 0)
+randomOutlierColumn <- 5
+burgerProcessTimes[randomOutlierRow,randomOutlierColumn] = round(abs(rnorm(1, mean = 400, sd = 20)), 0)
+```
+
+*** =sample_code
+```{r}
+# 1. Calculate the sample mean and standard deviation of the patty preperation process and assign your answers to the `x` and `sd`.
+
+x <-
+sdev <-
+
+# 2. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
+
+SE <-
+
+# 3. Calculate the T-score for the hypothesis test and assign your answer to `T_score`.
+
+T_score <-
+
+# 4. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
+
+p_value <-
+
+# 5. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+
+rejectH0 <-
+
+# 6. Confirm the results of your calculations using the `t.test()` function.
+
+
+
+```
+
+*** =solution
+```{r}
+burgerProcessTimesPreparePatty = burgerProcessTimes$preparePatty
+x = mean(burgerProcessTimesPreparePatty)
+sd = sd(burgerProcessTimesPreparePatty)
+n = nrow(burgerProcessTimes)
+
+SE = sd/sqrt(n)
+T_score = (x - 59)/SE
+
+df = n - 1
+
+p_value <- pt(T_score, df, lower.tail = FALSE)
+rejectH0 <- p_value < 0.01
+rejectH0
+
+t.test(x = burgerProcessTimesPreparePatty, mu = 59, alternative = "greater")
+```
+
+*** =sct
+```{r}
+test_object("x", undefined_msg = "Make sure to calculate the mean patty preperation process time and assign your answer to  `x`.",
+            incorrect_msg = "Make sure to calculate the mean patty preperation process time and assign your answer to  `x`.")
+
+test_object("x", undefined_msg = "Make sure to calculate the standard deviation of the patty preperation process time and assign your answer to  `sdev`.",
+            incorrect_msg = "Make sure to calculate the standard deviation of the patty preperation process time and assign your answer to  `sdev`.")
+            
+test_object("SE", undefined_msg = "Make sure to define a variable `SE`.",
+            incorrect_msg = "Make sure that you calculated the standard error of the sample mean price differences correctly and assigned your answer to `SE`. Refer to the prescribed textbook for the correct standard error formula to use.")
+            
+test_object("T_score", undefined_msg = "Make sure to define a variable `T_score`.",
+            incorrect_msg = "Make sure that you calculated the T-score of the sample mean price differences correctly and assigned your answer to `T_score`.")
+            
+test_object("p_value", undefined_msg = "Make sure to define a variable `p_value`.",
+            incorrect_msg = "Make sure that you calculated the p-value correctly and assigned your answer to `p_value`.")
+
+test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
+            incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
+            
+test_function('t.test', args = c("x", "mu", "alternative"), not_called_msg = "How about using the `t.test` function to check your answer?", args_not_specified_msg = "You need to specify certain input arguments for the function. Have a look at the documentation and figure out which input arguments to use. You also need to set the input arguments to the correct value inside the function call. For example, `t.test(x = variableA ...)`", incorrect_msg = "Some of the input arguments that you specified for the function is incorrect. Have a look at the documentation and figure out which input arguments to use. For example, `t.test(x = variableA ...)`")
+
+success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+```
+
