@@ -424,10 +424,10 @@ test_object("x", undefined_msg = "Make sure to calculate the standard deviation 
             incorrect_msg = "Make sure to calculate the standard deviation of the patty preparation process time and assign your answer to  `sdev`.")
             
 test_object("SE", undefined_msg = "Make sure to define a variable `SE`.",
-            incorrect_msg = "Make sure that you calculated the standard error of the sample mean price differences correctly and assigned your answer to `SE`. Refer to the prescribed textbook for the correct standard error formula to use.")
+            incorrect_msg = "Make sure that you calculated the standard error correctly and assigned your answer to `SE`. Refer to the prescribed textbook for the correct standard error formula to use.")
             
 test_object("T_score", undefined_msg = "Make sure to define a variable `T_score`.",
-            incorrect_msg = "Make sure that you calculated the T-score of the sample mean price differences correctly and assigned your answer to `T_score`.")
+            incorrect_msg = "Make sure that you calculated the T-score correctly and assigned your answer to `T_score`.")
             
 test_object("p_value", undefined_msg = "Make sure to define a variable `p_value`.",
             incorrect_msg = "Make sure that you calculated the p-value correctly and assigned your answer to `p_value`.")
@@ -435,6 +435,105 @@ test_object("p_value", undefined_msg = "Make sure to define a variable `p_value`
 test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
             incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
             
+test_function('t.test', args = c("x", "mu", "alternative"), not_called_msg = "How about using the `t.test` function to check your answer?", args_not_specified_msg = "You need to specify certain input arguments for the function. Have a look at the documentation and figure out which input arguments to use. You also need to set the input arguments to the correct value inside the function call. For example, `t.test(x = variableA ...)`", incorrect_msg = "Some of the input arguments that you specified for the function is incorrect. Have a look at the documentation and figure out which input arguments to use. For example, `t.test(x = variableA ...)`")
+
+success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8636aa14b2
+## Confidence interval for numerical data
+
+Calculate a 90% confidence interval for the mean preparation time for a burger. Calculate it semi-manually, thereafter confirm your answer using the `t.test` function.
+
+The results of sample times can be found in the `burgerProcessTimes` data-frame.
+
+*** =instructions
+
+1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+2. Calculate the Margin of Error for the 90% Confidence Interval and assign your answer to `ME`.
+3. Calculate the lower value of the Confidence Interval and assign your answer to `CI_low`.
+4. Calculate the upper value of the Confidence Interval and assign your answer to `CI_high`.
+5. Test your results using the `t.test` function.
+
+*** =hint
+
+There are no hints available.
+
+*** =pre_exercise_code
+```{r}
+nSamples <- round(runif(1, 200, 400),0)
+sampleNumber <- c(1:nSamples)
+preparePatty <- round(abs(rnorm(nSamples, mean = 60, sd = 10)), 0)
+prepareBun <- round(abs(rnorm(nSamples, mean = 20, sd = 3)), 0)
+assembleBurger <- round(abs(rnorm(nSamples, mean = 40, sd = 8)), 0)
+packageBurger <- round(abs(rnorm(nSamples, mean = 15, sd = 3)), 0)
+burgerProcessTimes <- data.frame(sampleNumber, preparePatty, prepareBun, assembleBurger, packageBurger)
+rm(nSamples)
+rm(sampleNumber)
+rm(preparePatty)
+rm(assembleBurger)
+rm(packageBurger)
+rm(prepareBun)
+```
+
+*** =sample_code
+```{r}
+# 1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+
+
+
+# 2. Calculate the Margin of Error for the 90% Confidence Interval and assign your answer to `ME`.
+
+
+
+# 3. Calculate the lower value of the Confidence Interval and assign your answer to `CI_low`.
+
+
+
+# 4. Calculate the upper value of the Confidence Interval and assign your answer to `CI_high`.
+
+
+
+# 5. Test your results using the `t.test` function.
+
+
+
+```
+
+*** =solution
+```{r}
+burgerProcessTimes$makeTime = burgerProcessTimes$preparePatty + burgerProcessTimes$prepareBun + burgerProcessTimes$assembleBurger + burgerProcessTimes$packageBurger
+
+x = mean(burgerProcessTimes$makeTime)
+sd = sd(burgerProcessTimes$makeTime)
+n = nrow(burgerProcessTimes)
+df = n -1
+
+SE = sd/sqrt(n)
+ME = abs(qt((1-0.90)/2, df))*SE
+
+CI = c(x - ME, x + ME)
+CI_low = CI[1]
+CI_high = CI[2]
+
+t.test(x = burgerProcessTimes$makeTime, alternative = "two.sided", conf.level = 0.9)
+```
+
+*** =sct
+```{r}
+test_object("SE", undefined_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`.",
+            incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula (check when and when not to use the pooled proportion), or you calculated the number of samples incorrectly.")
+            
+test_object("ME", undefined_msg = "Make sure to calculate the margin of error and assign your answer to `ME`.",
+            incorrect_msg = "Make sure to calculate the margin of error and assign your answer to `ME`. What could have possibly gone wrong is that you incorrectly calculated the critical t* value, or your ME is negative whereas it should always be positive.")
+            
+test_object("CI_low", undefined_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.",
+            incorrect_msg = "Make sure to calculate the lower confidence interval value and assign your answer to `CI_low`.")
+
+test_object("CI_high", undefined_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.",
+            incorrect_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.")
+
 test_function('t.test', args = c("x", "mu", "alternative"), not_called_msg = "How about using the `t.test` function to check your answer?", args_not_specified_msg = "You need to specify certain input arguments for the function. Have a look at the documentation and figure out which input arguments to use. You also need to set the input arguments to the correct value inside the function call. For example, `t.test(x = variableA ...)`", incorrect_msg = "Some of the input arguments that you specified for the function is incorrect. Have a look at the documentation and figure out which input arguments to use. For example, `t.test(x = variableA ...)`")
 
 success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
