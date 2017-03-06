@@ -2,113 +2,205 @@
 title       : Assignment 1 - Introduction to data, probability, and inference.
 description : This assignment covers the first three chapters of Industrial Analysis using R, which deals with introduction to data, basic probability theory, and inference for categorical and numerical data.
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bd1c2c90f3
-## A really bad movie
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a5a83c84d5
+## Instructions
+
+We work for a fast-food chain and have been instructed to analyse the performance of one of our most successful outlets. The outlet sells five main products:
+
+1. Burger
+2. Pizza
+3. Fries
+4. Cool-drink
+5. Ice-cream
+
+As well as two combo-meals, which is a main (either a burger or pizza) with fries and a cool-drink:
+
+6. Burger combo
+7. Pizza combo
+
+Using the above information and the provided instructions, answer and submit the following questions in DataCamp. Also copy and paste your final code from the code editor for each question into the "Assignment 1B: datacamp backup answers" test on clickUP. Failure to do so may result in a final mark of *ZERO* for the assignment.
+
+When answering the question, use the data loaded in your R workspace. *DO NOT* use the short-question data files.
+
+Please take note that the data used for this assignment is randomly generated and will change:
+
+- each time the assignment is attempted; and
+- when moving from one exercise to the next.
+
+There are no 'hints' available for the questions.
+
+When completing the assignment, read the instructions _carefully_, and if necessary, review the applicable engineering statistics methods.
+
+To continue with this chapter, hit the 'Submit Answer' button.
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
+
+- Hit the 'Submit Answer' button when you're done reading the instructions.
 
 *** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+Just hit the 'Submit Answer'.
 
 *** =pre_exercise_code
 ```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
+#none
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:8cdb285f3e
-## More movies
-
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
-
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
-
-*** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
-
-*** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
-
-*** =pre_exercise_code
-```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
 ```
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-
-
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
 
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-str(movie_selection)
-
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+#none
 ```
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+success_msg("Answer the following questions.")
+```
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
 
-test_object("good_movies")
+--- type:NormalExercise lang:r xp:100 skills:1 key:f643a67dfc
+## Hypothesis test for independence
 
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
+In January 2017 a pilot was launched whereby staff aggresively marketed the combo to customers who only ordered a pizza or a bigger. Staff were tasked to randomly target a client who only ordered a pizza or a bigger (therefore not each client was targeted) and to point-out that they will save money by taking the combo meal. Whether or not a client then upgraded his meal to a combo-meal was captured.
 
-test_error()
+Results for this pilot can be found in the `comboUpgradeJan17` data-frame.
 
-success_msg("Good work!")
+Based on the available data, does it seem that the probability of a combo-meal being upgraded is dependent or independent from the type of meal being ordered? Perform a hypothesis test to formally test this using an alpha level of 0.01. Use normal-distribution when completing the test. 
+
+The hypotheses for the test are as follow:
+
+* H0: The proportion of pizza orders that were upgraded to pizza-combos is the same as the proportion of burger orders that were upgraded to burger combos.
+* HA: The proportion of pizza orders that were upgraded to pizza-combos is not the same as the proportion of burger orders that were upgraded to burger combos.
+
+*** =instructions
+
+1. Calculate the proportion of pizzas that were upgraded and assign your answer to `pPizzaUpgrade`.
+2. Calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`.
+3. Calculate the pooled proportion of pizzas and burger that were upgraded and assign your answer to `pPooled`.
+4. Calculate the Standard Error for hypothesis test and assign your answer to `SE`.
+5. Calculate the T-score for the hypothesis test and assign your answer to `Z-score` (not that this part will not be marked, only the next part).
+6. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
+7. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+
+*** =hint
+
+There are no hints available.
+
+*** =pre_exercise_code
+```{r}
+genFastFoodSales <- function()
+{
+  nItems = round(runif(1, 5000, 10000), 0)
+  food_items <- c('burger-combo', 'pizza-combo', 'burger', 'pizza', 'fries', 'cooldrink', 'ice-cream')
+  foodItemSold <- sample(food_items, nItems, replace = TRUE)
+  
+  invoiceNumber <- paste('#', round(runif(nItems, 100000, 999999),0), sep= "")
+  fastFoodSales <- data.frame(invoiceNumber, foodItemSold)
+  fastFoodSales <- fastFoodSales[order(fastFoodSales$invoiceNumber),]
+  return(fastFoodSales)
+}
+
+salesJanPizza <- subset(salesJan, foodItemSold == "pizza")
+comboUpgradeAccepted <- sample(c(TRUE, FALSE), nrow(salesJanPizza), replace = TRUE, prob = c(0.25, 0.75))
+salesJanPizza$comboUpgradeAccepted = comboUpgradeAccepted
+
+salesJanBurger <- subset(salesJan, foodItemSold == "burger")
+comboUpgradeAccepted <- sample(c(TRUE, FALSE), nrow(salesJanBurger), replace = TRUE, prob = c(0.45, 0.55))
+salesJanBurger$comboUpgradeAccepted = comboUpgradeAccepted
+
+comboUpgrade <- rbind(salesJanBurger, salesJanPizza)
+comboUpgradeSample <- sample(1:nrow(comboUpgrade), size = 200)
+comboUpgrade <- comboUpgrade[comboUpgradeSample,]
+
+rm(genFastFoodSales)
+rm(salesJanPizza)
+rm(comboUpgradeAccepted)
+rm(salesJanBurger)
+rm(comboUpgrade)
+rm(comboUpgradeSample)
+comboUpgradeJan17 <- comboUpgrade[order(comboUpgrade$invoiceNumber),][1:200,]
+```
+
+*** =sample_code
+```{r}
+# 1. Calculate the proportion of pizzas that were upgraded and assign your answer to `pPizzaUpgrade`.
+
+pPizzaUpgrade <-
+
+# 2. Calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`.
+
+pBurgerUpgrade <-
+
+# 3. Calculate the pooled proportion of pizzas and burger that were upgraded and assign your answer to `pPooled`.
+
+pPooled <-
+
+# 4. Calculate the Standard Error for hypothesis test and assign your answer to `SE`.
+
+SE <-
+
+# 5. Calculate the T-score for the hypothesis test and assign your answer to `T_score` (not that this part will not be marked, only the next part).
+
+T_score <-
+
+# 6. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
+
+p_value <-
+
+# 7. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+
+rejectH0 <-
+
+```
+
+*** =solution
+```{r}
+salesTable <- table(comboUpgrade$foodItemSold) #asdfe@###441
+salesUpgradePropTable <- prop.table(table(comboUpgrade$foodItemSold, comboUpgrade$comboUpgradeAccepted),1)
+
+nPizzasHuts = as.numeric(salesTable['pizza'])
+nBurgerMcd = as.numeric(salesTable['burger'])
+
+pPizzaUpgrade = salesUpgradePropTable[1,2] #4334@39913
+pBurgerUpgrade = salesUpgradePropTable[2,2]
+pPooled = as.numeric((table(comboUpgrade$comboUpgradeAccepted)/nrow(comboUpgrade))['TRUE'])
+
+tenSuccess = pPooled*nPizzasHuts > 10 & pPooled*nBurgerMcd > 10
+tenFailure = (1-pPooled)*nPizzasHuts > 10 & (1-pPooled)*nBurgerMcd > 10
+successFailureCondition = tenSuccess & tenFailure
+
+SE = sqrt(pPooled*(1-pPooled)/nPizzasHuts + pPooled*(1-pPooled)/nBurgerMcd)
+T_score_ejw = (pPizzaUpgrade - pBurgerUpgrade)/SE
+dfreedomss = min(nPizzasHuts - 1, nBurgerMcd - 1) #*&@34werwe
+
+if (T_score_ejw > 0){p_value = 2*pnorm(T_score_ejw, lower.tail = FALSE)}else{p_value = 2*pnorm(T_score_ejw, lower.tail = TRUE)}
+
+rejectH0 <- p_value < 0.01
+```
+
+*** =sct
+```{r}
+test_object("pPizzaUpgrade", undefined_msg = "Make sure to calculate the proportion of pizzas that were upgraded and assign your answer to `pPizzaUpgrade`.", incorrect_msg = "Make sure to calculate the proportion of pizzas that were upgraded and assign your answer to `pPizzaUpgrade`. Assign only the numeric value to `pPizzaUpgrade`.")
+
+test_object("pBurgerUpgrade", undefined_msg = "Make sure to calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`.", incorrect_msg = "Make sure to calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`. Assign only the numeric value to `pBurgerUpgrade`.")
+
+test_object("pPooled", undefined_msg = "Make sure to calculate the pooled proportion upgrades and assign your answer to `pPooled`.", incorrect_msg = "Make sure to calculate the pooled proportion upgrades and assign your answer to `pPooled`. Assign only the numeric value to `pPooled`.")
+            
+test_object("SE", undefined_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`.",
+            incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula (check when and when not to use the pooled proportion), or you calculated the number of samples per group incorrectly.")
+            
+test_object("p_value", undefined_msg = "Make sure to calculate the p-value and assign your answer to `p_value`.",
+            incorrect_msg = "Make sure to calculate the p-value and assign your answer to `p_value`. What could have possibly gone wrong is that you incorrectly calculated the Z-score, or you incorrectly calculate `p-value` which depends on whether it's a double sided hypothesis test and whether Z-score is positive or negative.")
+            
+test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
+            incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
+
+success_msg("Correct!")
 ```
