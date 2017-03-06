@@ -65,10 +65,10 @@ success_msg("Answer the following questions.")
 ```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:f643a67dfc
+--- type:NormalExercise lang:r xp:0 skills:1 key:f643a67dfc
 ## Hypothesis test for independence
 
-In January 2017 a pilot was launched whereby staff aggresively marketed the combo to customers who only ordered a pizza or a bigger. Staff were tasked to randomly target a client who only ordered a pizza or a bigger (therefore not each client was targeted) and to point-out that they will save money by taking the combo meal. Whether or not a client then upgraded his meal to a combo-meal was captured.
+In January 2017 a pilot was launched whereby staff aggressively marketed the combo to customers who only ordered a pizza or a burger. Staff were tasked to randomly target a client who only ordered a pizza or a bigger (therefore not each client was targeted) and to point-out that they will save money by taking the combo meal. Whether or not a client then upgraded his meal to a combo-meal was captured.
 
 Results for this pilot can be found in the `comboUpgradeJan17` data-frame.
 
