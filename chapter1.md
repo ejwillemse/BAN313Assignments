@@ -333,14 +333,14 @@ An external trainer claims that his specialised training will result in a mean p
 
 Is there sufficient evidence using an alpha = 0.01 level to suggest that the current patty preparation time is more than 59 seconds?
 
-The hyptheses are:
+The hypotheses are:
 
 * H0: The current patty preparation process takes on average 59 seconds.
 * HA: The current patty preparation process takes on average more than 59 seconds.
 
 *** =instructions
 
-1. Calculate the sample mean and standard deviation of the patty preperation process and assign your answers to the `x` and `sdev`.
+1. Calculate the sample mean and standard deviation of the patty preparation process and assign your answers to the `x` and `sdev`.
 2. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
 3. Calculate the T-score for the hypothesis test and assign your answer to `T_score`.
 4. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
@@ -369,7 +369,7 @@ burgerProcessTimes[randomOutlierRow,randomOutlierColumn] = round(abs(rnorm(1, me
 
 *** =sample_code
 ```{r}
-# 1. Calculate the sample mean and standard deviation of the patty preperation process and assign your answers to the `x` and `sd`.
+# 1. Calculate the sample mean and standard deviation of the patty preparation process and assign your answers to the `x` and `sdev`.
 
 x <-
 sdev <-
@@ -418,10 +418,10 @@ t.test(x = burgerProcessTimesPreparePatty, mu = 59, alternative = "greater")
 *** =sct
 ```{r}
 test_object("x", undefined_msg = "Make sure to calculate the mean patty preperation process time and assign your answer to  `x`.",
-            incorrect_msg = "Make sure to calculate the mean patty preperation process time and assign your answer to  `x`.")
+            incorrect_msg = "Make sure to calculate the mean patty preparation process time and assign your answer to  `x`.")
 
 test_object("x", undefined_msg = "Make sure to calculate the standard deviation of the patty preperation process time and assign your answer to  `sdev`.",
-            incorrect_msg = "Make sure to calculate the standard deviation of the patty preperation process time and assign your answer to  `sdev`.")
+            incorrect_msg = "Make sure to calculate the standard deviation of the patty preparation process time and assign your answer to  `sdev`.")
             
 test_object("SE", undefined_msg = "Make sure to define a variable `SE`.",
             incorrect_msg = "Make sure that you calculated the standard error of the sample mean price differences correctly and assigned your answer to `SE`. Refer to the prescribed textbook for the correct standard error formula to use.")
@@ -439,4 +439,3 @@ test_function('t.test', args = c("x", "mu", "alternative"), not_called_msg = "Ho
 
 success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
 ```
-
