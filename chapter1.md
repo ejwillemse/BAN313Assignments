@@ -5,7 +5,7 @@ description : This assignment covers the first three chapters of Industrial Anal
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:a5a83c84d5
+--- type:NormalExercise lang:r xp:0 skills:1 key:a5a83c84d5
 ## Instructions
 
 We work for a fast-food chain and have been instructed to analyse the performance of one of our most successful outlets. The outlet sells five main products:
@@ -65,7 +65,7 @@ success_msg("Answer the following questions.")
 ```
 
 
---- type:NormalExercise lang:r xp:0 skills:1 key:f643a67dfc
+--- type:NormalExercise lang:r xp:100 skills:1 key:f643a67dfc
 ## Hypothesis test for independence
 
 In January 2017 a pilot was launched whereby staff aggressively marketed the combo to customers who only ordered a pizza or a burger. Staff were tasked to randomly target a client who only ordered a pizza or a bigger (therefore not each client was targeted) and to point-out that they will save money by taking the combo meal. Whether or not a client then upgraded his meal to a combo-meal was captured.
