@@ -326,11 +326,10 @@ success_msg("Correct! Remember to copy and paste your answer code from the `scri
 --- type:NormalExercise lang:r xp:100 skills:1 key:0b9e31a47e
 ## Hypothesis test for numerical data
 
-We wish to analyse the burger-making process, which management is unhappy with. The time taken to complete a burger was observed for a random sampled of ordered burgers. The results of which can be found in the `burgerProcessTimes` data-frame.
-
+We wish to analyse the burger-making process, which management is unhappy with. The time taken to complete a burger was observed for a random sample of ordered burgers, the results of which can be found in the `burgerProcessTimes` data-frame.
 Burger making consists of four processes. The time taken to complete each process, in seconds, was captured for each burger in the sample and can be found in the frame.
 
-An external trainer claims that his specialised training will result in a mean processing time of the patty preparation to about 58 seconds. Management has indicated that if there is sufficient evidence that the current process takes longer than 59 seconds, we should consider hiring the trainer.
+A consultant claims that his specialised training will result in a mean processing time of the patty preparation of about 58 seconds. Management has indicated that if there is sufficient evidence that the current process takes longer than 59 seconds, we should consider hiring the consultant.
 
 Is there sufficient evidence using an alpha = 0.01 level to suggest that the current patty preparation time is more than 59 seconds?
 
@@ -341,11 +340,11 @@ The hypotheses are:
 
 *** =instructions
 
-1. Calculate the sample mean and standard deviation of the patty preparation process and assign your answers to the `x` and `sdev`.
+1. Calculate the sample mean and standard deviation of the patty preparation process and assign your answers to `x` and `sdev`.
 2. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
 3. Calculate the T-score for the hypothesis test and assign your answer to `T_score`.
 4. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
-5. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+5. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer to `rejectH0`. The answer which should either be `TRUE` for reject H0 and `FALSE` for do not reject H0.
 6. Confirm the results of your calculations using the `t.test()` function.
 
 *** =hint
@@ -445,9 +444,10 @@ success_msg("Correct! Remember to copy and paste your answer code from the `scri
 --- type:NormalExercise lang:r xp:100 skills:1 key:8636aa14b2
 ## Confidence interval for numerical data
 
-Calculate a 90% confidence interval for the mean preparation time for a burger. Calculate it semi-manually, thereafter confirm your answer using the `t.test` function.
+Calculate a 90% confidence interval for the mean preparation time for a _complete burger_, thus the time taken to complete all the processes. Calculate it semi-manually, thereafter confirm your answer using the `t.test` function.
 
 The results of sample times can be found in the `burgerProcessTimes` data-frame.
+Note that the data is different from the previous question.
 
 *** =instructions
 
@@ -524,7 +524,7 @@ t.test(x = burgerProcessTimes$makeTime, alternative = "two.sided", conf.level = 
 *** =sct
 ```{r}
 test_object("SE", undefined_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`.",
-            incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula (check when and when not to use the pooled proportion), or you calculated the number of samples incorrectly.")
+            incorrect_msg = "Make sure to calculate the Standard Error and assign your answer to `SE`. What could have possibly gone wrong is that you used the wrong formula, or you calculated the number of samples, mean or standard deviation incorrectly.")
             
 test_object("ME", undefined_msg = "Make sure to calculate the margin of error and assign your answer to `ME`.",
             incorrect_msg = "Make sure to calculate the margin of error and assign your answer to `ME`. What could have possibly gone wrong is that you incorrectly calculated the critical t* value, or your ME is negative whereas it should always be positive.")
