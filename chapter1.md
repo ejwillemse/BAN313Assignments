@@ -72,7 +72,7 @@ In January 2017 a pilot was launched whereby staff aggressively marketed the com
 
 Results for this pilot can be found in the `comboUpgradeJan17` data-frame.
 
-Based on the available data, does it seem that the probability of a combo-meal being upgraded is dependent or independent from the type of meal being ordered? Perform a hypothesis test to formally test this using an alpha level of 0.01. Use normal-distribution when completing the test. 
+Based on the available data, does it seem that the probability of a combo-meal being upgraded is dependent or independent from the type of meal being ordered? Perform a hypothesis test to formally test this using an alpha level of 0.01. Use the normal-distribution to conduct the test. 
 
 The hypotheses for the test are as follow:
 
@@ -84,10 +84,10 @@ The hypotheses for the test are as follow:
 1. Calculate the proportion of pizzas that were upgraded and assign your answer to `pPizzaUpgrade`.
 2. Calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`.
 3. Calculate the pooled proportion of pizzas and burger that were upgraded and assign your answer to `pPooled`.
-4. Calculate the Standard Error for hypothesis test and assign your answer to `SE`.
-5. Calculate the T-score for the hypothesis test and assign your answer to `Z-score` (not that this part will not be marked, only the next part).
+4. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
+5. Calculate the T-score for the hypothesis test and assign your answer to `Z-score` (not that this part will not be checked).
 6. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
-7. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer, which should be either `TRUE` for reject H0 and `FALSE` for do not reject H0, to `rejectH0`.
+7. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer to `rejectH0`. The answer which should either be `TRUE` for reject H0 and `FALSE` for do not reject H0, 
 
 *** =hint
 
@@ -206,7 +206,7 @@ test_object("p_value", undefined_msg = "Make sure to calculate the p-value and a
 test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH0`.",
             incorrect_msg = "Make sure that you correctly assigned the `TRUE` or `FALSE` value to `rejectH0`. Refer to the prescribed textbook on how to determine if we can reject (`TRUE`) or not reject (`FALSE`) the null hypothesis based on alpha.")
 
-success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+success_msg("Correct! Remember to copy and paste your answer code from the `script.R` window on to the top-right into the `Assignment 1B: datacamp backup answers - Hypothesis test for independence` question.  DO NOT copy and paste the console output.")
 ```
 
 
@@ -216,11 +216,12 @@ success_msg("Correct! Remember to copy and paste your answer from the editor int
 
 Calculate a 97% confidence interval for the true proportion of _burgers_ that will be upgraded to a combo-meal.
 
-Results for the pilot can be found in the `comboUpgradeJan17` data-frame.
+Results for the pilot can be found in the `comboUpgradeJan17` data-frame. 
+Note that the data is different from the previous question.
 
 *** =instructions
 
-1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+1. Calculate the Standard Error for the Confidence Interval of proportion of burger upgrades and assign your answer to `SE`.
 2. Calculate the Margin of Error for the 97% Confidence Interval and assign your answer to `ME`.
 3. Calculate the lower value of the Confidence Interval and assign your answer to `CI_low`.
 4. Calculate the upper value of the Confidence Interval and assign your answer to `CI_high`.
@@ -268,7 +269,7 @@ rm(comboUpgradeSample)
 
 *** =sample_code
 ```{r}
-# 1. Calculate the Standard Error for the Confidence Interval and assign your answer to `SE`.
+# 1. Calculate the Standard Error for the Confidence Interval of proportion of burger upgrades and assign your answer to `SE`.
 
 SE <- 
 
@@ -319,7 +320,7 @@ test_object("CI_low", undefined_msg = "Make sure to calculate the lower confiden
 test_object("CI_high", undefined_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.",
             incorrect_msg = "Make sure to calculate the higher confidence interval value and assign your answer to `CI_high`.")
 
-success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+success_msg("Correct! Remember to copy and paste your answer code from the `script.R` window on to the top-right into the `Assignment 1B: datacamp backup answers - Confidence interval for proportions` question.  DO NOT copy and paste the console output.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0b9e31a47e
@@ -437,7 +438,7 @@ test_object("rejectH0", undefined_msg = "Make sure to define a variable `rejectH
             
 test_function('t.test', args = c("x", "mu", "alternative"), not_called_msg = "How about using the `t.test` function to check your answer?", args_not_specified_msg = "You need to specify certain input arguments for the function. Have a look at the documentation and figure out which input arguments to use. You also need to set the input arguments to the correct value inside the function call. For example, `t.test(x = variableA ...)`", incorrect_msg = "Some of the input arguments that you specified for the function is incorrect. Have a look at the documentation and figure out which input arguments to use. For example, `t.test(x = variableA ...)`")
 
-success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+success_msg("Correct! Remember to copy and paste your answer code from the `script.R` window on to the top-right into the `Assignment 1B: datacamp backup answers - Hypothesis test for numerical data` question.  DO NOT copy and paste the console output.")
 ```
 
 
@@ -536,5 +537,5 @@ test_object("CI_high", undefined_msg = "Make sure to calculate the higher confid
 
 test_function('t.test', args = c("x", "alternative", "conf.level"), not_called_msg = "How about using the `t.test` function to check your answer?", args_not_specified_msg = "You need to specify certain input arguments for the function. Have a look at the documentation and figure out which input arguments to use. You also need to set the input arguments to the correct value inside the function call. For example, `t.test(x = variableA ...)`", incorrect_msg = "Some of the input arguments that you specified for the function is incorrect. Have a look at the documentation and figure out which input arguments to use. For example, `t.test(x = variableA ...)`")
 
-success_msg("Correct! Remember to copy and paste your answer from the editor into the `Assignment 1B: datacamp backup answers` test on clickUP.")
+success_msg("Correct! Remember to copy and paste your answer code from the `script.R` window on to the top-right into the `Assignment 1B: datacamp backup answers - Confidence interval for numerical data` question.  DO NOT copy and paste the console output.")
 ```
