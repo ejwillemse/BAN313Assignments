@@ -10,20 +10,20 @@ description : This assignment covers the first four chapters of Industrial Analy
 
 We work for a fast-food chain and have been instructed to analyse the performance of one of our most successful outlets. The outlet sells five main products:
 
-1. Burger
-2. Pizza
-3. Fries
-4. Cool-drink
-5. Ice-cream
+1. Burgers
+2. Pizzas
+3. Friess
+4. Cool-drinks
+5. Ice-creams
 
-As well as two combo-meals, which is a main (either a burger or pizza) with fries and a cool-drink:
+As well as two combo-meals, which is a main (either a burger or pizza) with fries and a cool-drink included:
 
-6. Burger combo
-7. Pizza combo
+6. Burger-combo
+7. Pizza-combo
 
-Using the above information and the provided instructions, answer and submit the following questions in DataCamp. Also copy and paste your final code from the code editor for each question into the "Assignment 1B: datacamp backup answers" test on clickUP. Failure to do so may result in a final mark of *ZERO* for the assignment.
+Using the above information and the provided instructions, answer and submit the following questions in DataCamp. Also copy and paste your final code from the code editor for each question into the "Assignment 1B: datacamp backup answers" test on clickUP. Failure to do so may result in a final mark of _ZERO_ for the assignment.
 
-When answering the question, use the data loaded in your R workspace. *DO NOT* use the short-question data files.
+When answering the questions, use the data loaded in your R workspace. _DO NOT_ use the short-question data files on clickUP.
 
 Please take note that the data used for this assignment is randomly generated and will change:
 
