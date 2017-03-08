@@ -85,7 +85,7 @@ The hypotheses for the test are as follow:
 2. Calculate the proportion of burgers that were upgraded and assign your answer to `pBurgerUpgrade`.
 3. Calculate the pooled proportion of pizzas and burger that were upgraded and assign your answer to `pPooled`.
 4. Calculate the Standard Error for the hypothesis test and assign your answer to `SE`.
-5. Calculate the T-score for the hypothesis test and assign your answer to `Z-score` (not that this part will not be checked).
+5. Calculate the T-score for the hypothesis test and assign your answer to `Z-score` (note that this part will not be checked).
 6. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
 7. Use the p-value and the alpha value of 0.01 to conclude if the null-hypothesis should be rejected and assign you answer to `rejectH0`. The answer which should either be `TRUE` for reject H0 and `FALSE` for do not reject H0, 
 
@@ -148,7 +148,7 @@ pPooled <-
 
 SE <-
 
-# 5. Calculate the T-score for the hypothesis test and assign your answer to `T_score` (not that this part will not be marked, only the next part).
+# 5. Calculate the Z-score for the hypothesis test and assign your answer to `T_score` (note that this part will not be marked, only the next part).
 
 T_score <-
 
