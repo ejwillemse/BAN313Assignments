@@ -150,7 +150,7 @@ SE <-
 
 # 5. Calculate the Z-score for the hypothesis test and assign your answer to `T_score` (note that this part will not be marked, only the next part).
 
-T_score <-
+Z_score <-
 
 # 6. Calculate the p-value for the hypothesis test and assign your answer to `p_value`.
 
