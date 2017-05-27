@@ -45,7 +45,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:200 skills:1 key:a5a83c84d5
-## Question 1
+## Question 1 test
 
 To model inventory levels we first need to determine what distribution the two variables follow. Samples for both for 100 days are available in the `productionSample` data.frame.
 
