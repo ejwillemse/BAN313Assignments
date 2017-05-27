@@ -2,6 +2,9 @@
 title       : Assignment 2 - Sensitivity analysis.
 description : This assignment covers sensitivity analysis using R.
 
+
+
+
 --- type:MultipleChoiceExercise lang:r xp:0 skills:1 key:8eaf7b9ebd
 ## Background
 
@@ -45,7 +48,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:200 skills:1 key:a5a83c84d5
-## Question 1 test
+## Question 1
 
 To model inventory levels we first need to determine what distribution the two variables follow. Samples for both for 100 days are available in the `productionSample` data.frame.
 
@@ -95,7 +98,7 @@ incorrect_msg = "Something went wrong in calculating `p_orders`.")
 success_msg("Correct!")
 ```
 
--- type:NormalExercise lang:r xp:400 skills:1 key:dec1c30a07
+--- type:NormalExercise lang:r xp:400 skills:1 key:dec1c30a07
 ## Question 2
 
 For this question you need to use the bootstrapping method to calculate 95% confidence intervals for the distribution parameters, as well as the expected values for the intervals. Similar to the previous exercises the sample data is available from the `productionSample` and `productionSample` dataframes.
