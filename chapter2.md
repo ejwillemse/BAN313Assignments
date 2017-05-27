@@ -314,7 +314,7 @@ test_object("medianSimStockout_high", undefined_msg = "Something went wrong in c
 success_msg("Correct!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:53546d675a
+--- type:NormalExercise lang:r xp:100 skills:1 key:e4e2b433a6
 ## Question 4
 
 In this question we will perform one-factor-at-a-time sensitivity analysis on the standard deviation of products manufactured using the provided inventory simulation model that simulates inventory stock-outs.
@@ -449,7 +449,7 @@ test_object("medianSimStockout_high", undefined_msg = "Something went wrong in c
 success_msg("Correct!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:53546d675a
+--- type:NormalExercise lang:r xp:100 skills:1 key:0ee6ed3212
 ## Question 5
 
 In this question we will perform one-factor-at-a-time sensitivity analysis on the mean products ordered using the provided inventory simulation model that simulates inventory stock-outs.
@@ -584,7 +584,7 @@ test_object("medianSimStockout_high", undefined_msg = "Something went wrong in c
 success_msg("Correct!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:53546d675a
+--- type:NormalExercise lang:r xp:100 skills:1 key:05f2fd368b
 ## Question 6
 
 In this question we will perform one-factor-at-a-time sensitivity analysis on the standard deviation of products ordered using the provided inventory simulation model that simulates inventory stock-outs.
