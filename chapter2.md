@@ -205,7 +205,7 @@ Assume that the mean number of products ordered is within the following interval
 
 1. Use the available simulation code and repeat the simulation 1000 times for `nDays = 30` days with a mean number of products manufactured of 143.08. Assign the **median** of the simulated number of stock-outs to `medianSimStockout_low`.
 2. Repeat the simulation 1000 times for `nDays = 30` days with a mean number of products manufactured of 152.69. Assign the **median** of the simulated number of stock-outs to `medianSimStockout_expected`.
-3. Repeat the simulation 1000 for `nDays = 30` days with a mean number of products manufactured of 152.69. Assign the **median** of the simulated number of stock-outs to `medianSimStockout_high`.
+3. Repeat the simulation 1000 for `nDays = 30` days with a mean number of products manufactured of 162.47. Assign the **median** of the simulated number of stock-outs to `medianSimStockout_high`.
 
 *** =pre_exercise_code
 ```{r}
